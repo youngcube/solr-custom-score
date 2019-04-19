@@ -43,15 +43,16 @@ public class FunctionValueSource extends ValueSource {
         return new FloatDocValues(this) {
             @Override
             public float floatVal(int i) {
+                try {
                     long year = y.longVal(i);
                     double money=m.doubleVal(i);
                     float year_score = ScoreTools.getYearScore(year,maxYears);
                     float money_socre = ScoreTools.getMoneyScore(money,money_maxTimes,money_base);
-//                log.info("得分详情：year:{} money:{} year_score:{} money_score:{} total:{}"
-//                ,year
-//                ,money,year_score,money_socre
-//                ,year_score*money_socre);
-                return year_score*money_socre;
+                    return year_score*money_socre;
+                } catch (Exception e){
+
+                }
+                return 0;
             }
         };
     }

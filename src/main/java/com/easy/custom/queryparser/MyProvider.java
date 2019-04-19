@@ -33,10 +33,10 @@ public class MyProvider extends CustomScoreProvider {
         //一段demo，小于2010年的加分，大于500万资金的加分
         float year_score=1;
         float money_socre=1;
-         if(year.get(doc)<2010){
+         if(year.longValue()<2010){
             year_score=5;
          }
-        double m=Double.longBitsToDouble(money.get(doc));
+        double m=Double.longBitsToDouble(money.longValue());
         if(m>600){
             money_socre=7;
         }
@@ -48,7 +48,7 @@ public class MyProvider extends CustomScoreProvider {
 
         log.info("前台参数：大小:{}  内容:{} ",params.size(),params);
         log.info("查询一次：docid:{} year:{} money:{} 1score:{} 2score:{} year_score:{} money_score:{} ",
-                doc,year.get(doc),m
+                doc,year.longValue(),m
                 ,subQueryScore,valSrcScore,year_score,money_socre);
         return  subQueryScore*valSrcScore*year_score*money_socre;
     }

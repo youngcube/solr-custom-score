@@ -83,18 +83,18 @@ public class MyHandler  extends RequestHandlerBase {
     }
 
 
-    @Override
+//    @Override
     public String getVersion() {
         return "1.0";
     }
 
 
-    @Override
+//    @Override
     public String getSource() {
         return "http://qindongliang.iteye.com/";
     }
 
-    @Override
+//    @Override
     public NamedList<Object> getStatistics() {
 
         NamedList all=new SimpleOrderedMap();
